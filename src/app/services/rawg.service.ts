@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class RawgService {
-  private url: string = 'https://api.rawg.io/api';
+  private rawgApiUrl: string = environment.Rawg_Api_Url;
   private httpHeaders = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
   private httpParams = new HttpParams();
 
@@ -18,25 +20,27 @@ export class RawgService {
   getUrlRequested(searchTerm: string): Observable<any> {
     const params = this.createParams();
 
-    return this.rawgHttp.get(`${this.url}/${searchTerm}`, { headers: this.httpHeaders, params })
-    .pipe(
-      retry(1),
-      catchError(error => throwError(() => `ERROR: ${error}` ))
-    )
+    return this.rawgHttp.get(`${this.rawgApiUrl}/${searchTerm}`, { headers: this.httpHeaders, params })
+      .pipe(
+        retry(1),
+        catchError(error => throwError(() => `ERROR: ${error}` ))
+      )
   }
 
   // @desc  Fetch next page
   // @route GET url/searchTerm&page=<number>
   getNextPage(nextUrl: string): Observable<any> {
     return this.rawgHttp.get(nextUrl, { headers: this.httpHeaders })
-    .pipe(
-      retry(1),
-      catchError(error => throwError(() => `ERROR: ${error}` ))
-    )
+      .pipe(
+        retry(1),
+        catchError(error => throwError(() => `ERROR: ${error}` ))
+      )
   }
 
+  // Helper private method createParams()
+  // Returning generated params
   private createParams(): HttpParams {
     return this.httpParams
-      .set('key', '1099f60b4c2f421d9323898b4713b530');
+      .set('key', environment.Rawg_Api_Key);
   }
 }

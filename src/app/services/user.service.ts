@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 
 import { User } from '../interfaces/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
-  private url: string = 'https://jsonplaceholder.typicode.com/users';
+  private url: string = environment.User_Login_Url;
   private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
 
   constructor(private userHttp: HttpClient) { }
