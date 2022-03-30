@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { enable } from 'colors';
 
 // Components
 import { Error404Component } from './components/error404/error404.component';
@@ -17,7 +18,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: true,
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
 

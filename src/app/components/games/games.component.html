@@ -1,1 +1,26 @@
-<p>games works!</p>
+<!-- Display all game cards from api -->
+<div class="container">
+  <!-- Spinner when loading -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+  <!-- Cards Section -->
+  <div class="row row-cols-4">
+    <div class="col mb-3" *ngFor="let game of data.results">
+      <div class="card bg-dark text-light">
+        <img [src]="game.background_image" alt="Game image" class="card-img-top">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">{{ game.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ platforms }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{ gameGenres }}</h6>
+          <h6 class="card-text text-warning">Rating: {{ game.rating }}</h6>
+          <a routerLink="/game/{{ game.id }}" class="btn btn-danger">Play Game</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center" *ngIf="!loading">
+    <button class="btn btn-dark m-2" [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
+    <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
+  </div>
+</div>
