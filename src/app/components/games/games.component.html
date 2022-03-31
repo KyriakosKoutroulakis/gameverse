@@ -1,5 +1,15 @@
 <!-- Display all game cards from api -->
 <div class="container">
+  <div class="d-flex justify-content-evenly m-3">
+    <div class="input-group">
+      <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search a Game" />
+      <button class="btn btn-outline-secondary" type="button" (click)="filterGames()">Search</button>
+    </div>
+    <div>
+      <a class="btn btn-danger mx-3 f-width" (click)="orderingGames('rating')">Top Rated</a>
+      <a class="btn btn-danger f-width" (click)="orderingGames('released')">Most Recent</a>
+    </div>
+  </div>
   <!-- Spinner when loading -->
   <div class="d-flex justify-content-center" *ngIf="loading">
     <app-spinner></app-spinner>

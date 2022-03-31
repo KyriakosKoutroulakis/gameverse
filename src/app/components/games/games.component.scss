@@ -4,6 +4,18 @@
   background-color: inherit;
 }
 
+.input-group {
+  width: 30%;
+  
+  input {
+    outline: none;
+  }
+}
+
+.f-width {
+  width: 115px;
+}
+
 .card {
   width: 100%;
   height: 100%;

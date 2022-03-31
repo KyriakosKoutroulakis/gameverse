@@ -17,8 +17,8 @@ export class RawgService {
 
   // @desc  Fetch data /games -- /genres 
   // @route GET url/searchTerm
-  getUrlRequested(searchTerm: string): Observable<any> {
-    const params = this.createParams();
+  getUrlRequested(searchTerm: string, param: string): Observable<any> {
+    const params = this.createParams(param);
 
     return this.rawgHttp.get(`${this.rawgApiUrl}/${searchTerm}`, { headers: this.httpHeaders, params })
       .pipe(
@@ -39,8 +39,14 @@ export class RawgService {
 
   // Helper private method createParams()
   // Returning generated params
-  private createParams(): HttpParams {
-    return this.httpParams
-      .set('key', environment.Rawg_Api_Key);
+  private createParams(param: string): HttpParams {
+    console.log(param);
+    if (param !== '') {
+      return this.httpParams
+        .set('ordering', `-${param}`)
+        .set('key', environment.Rawg_Api_Key);
+    } else {
+      return this.httpParams.set('key', environment.Rawg_Api_Key);
+    } 
   }
 }
