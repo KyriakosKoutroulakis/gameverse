@@ -1,1 +1,11 @@
-<p>game works!</p>
+<!-- Game Details -->
+<div class="contsiner">
+  <!-- Spinner When Loading -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+  <!-- Game Info -->
+  <div>
+    {{ data | json }}
+  </div>
+</div>

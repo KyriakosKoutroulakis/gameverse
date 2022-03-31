@@ -37,10 +37,21 @@ export class RawgService {
       )
   }
 
+  // @desc  Fetch game details
+  // @route GET url/games/:id
+  getGameDetails(id: number): Observable<any> {
+    const params = this.createParams('');
+
+    return this.rawgHttp.get(`${this.rawgApiUrl}/games/${id}`, { headers: this.httpHeaders, params })
+      .pipe(
+        retry(1),
+        catchError(error => throwError(() => `ERROR: ${error}` ))
+      )
+  }
+
   // Helper private method createParams()
   // Returning generated params
   private createParams(param: string): HttpParams {
-    console.log(param);
     if (param !== '') {
       return this.httpParams
         .set('ordering', `-${param}`)

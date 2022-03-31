@@ -1,24 +1,26 @@
-<!-- Display all game cards from api -->
+<!-- Display Games Cards With Pagination -->
 <div class="container">
-  <div class="d-flex justify-content-evenly m-3">
+  <!-- Spinner When Loading -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+  <!-- Search Bar On Top -->
+  <div class="d-flex justify-content-evenly m-3" *ngIf="!loading">
     <div class="input-group">
       <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search a Game" />
       <button class="btn btn-outline-secondary" type="button" (click)="filterGames()">Search</button>
     </div>
     <div>
-      <a class="btn btn-danger mx-3 f-width" (click)="orderingGames('rating')">Top Rated</a>
-      <a class="btn btn-danger f-width" (click)="orderingGames('released')">Most Recent</a>
+      <a class="custom-btn" (click)="getGames()"><strong>#Popular</strong></a>
+      <a class="custom-btn  mx-3" (click)="orderingGames('rating')"><strong>#Top Rated</strong></a>
+      <a class="custom-btn" (click)="orderingGames('released')"><strong>#Most Recent</strong></a>
     </div>
   </div>
-  <!-- Spinner when loading -->
-  <div class="d-flex justify-content-center" *ngIf="loading">
-    <app-spinner></app-spinner>
-  </div>
-  <!-- Cards Section -->
+  <!-- Games Cards Section -->
   <div class="row row-cols-4">
     <div class="col mb-3" *ngFor="let game of data.results">
       <div class="card bg-dark text-light">
-        <img [src]="game.background_image" alt="Game image" class="card-img-top">
+        <img [src]="game.background_image" class="card-img-top" alt="Game image" />
         <div class="card-body text-center">
           <h5 class="card-title mb-3">{{ game.name }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ platforms }}</h6>
@@ -34,3 +36,5 @@
     <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
   </div>
 </div>
+
+<!-- {{ data | async | json }} -->

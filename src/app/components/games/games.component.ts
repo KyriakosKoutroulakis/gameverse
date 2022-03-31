@@ -8,6 +8,13 @@ import { RawgService } from 'src/app/services/rawg.service';
   styleUrls: ['./games.component.scss']
 })
 
+/** 
+* * important Dynamically push to platformsArray after subrcribe
+* * important Search name in page
+* TODO: filterGames() fix
+*
+*/
+
 export class GamesComponent implements OnInit {
   public data: any;
   public msg: string = '';
@@ -19,11 +26,12 @@ export class GamesComponent implements OnInit {
   constructor(private rawgService: RawgService) { }
 
   ngOnInit(): void {
+    this.getGames();
+  }
+
+  getGames() {
     this.rawgService.getUrlRequested('games', '').subscribe({
-      next: (res) => {
-        this.data = res;
-        this.loading = false;
-      },
+      next: (res) => this.data = res,
       error: (err) => this.msg = err
     });
     this.loading = false;
@@ -32,24 +40,22 @@ export class GamesComponent implements OnInit {
   getNextPage(url: string) {
     this.loading = true;
     this.rawgService.getNextPage(url).subscribe({
-      next: (res) => {
-        this.data = res;
-        this.loading = false;
-      },
+      next: (res) => this.data = res,
       error: (err) => this.msg = err
     });
-  
+
+    this.loading = false;
     // Scroll back on top of the page
     window.scroll(0,0);
   }
 
   orderingGames(param: string) {
+    this.loading = true;
     this.rawgService.getUrlRequested('games', param).subscribe({
-      next: (res) => {
-        this.data = res;
-        this.loading = false;
-      }
-    })
+      next: (res) => this.data = res,
+      error: (err) => this.msg = err
+    });
+    this.loading = false;
   }
 
   filterGames() {

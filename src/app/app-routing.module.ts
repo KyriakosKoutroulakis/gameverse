@@ -11,6 +11,7 @@ import { AboutComponent } from './components/about/about.component';
 
 
 const routes: Routes = [
+  { path: '', component: GamesComponent },
   { path: 'games', component: GamesComponent },
   { path: 'game/:id', component: GameComponent},
   { path: 'genres', component: GenresComponent },

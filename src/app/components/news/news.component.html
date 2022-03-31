@@ -1,1 +1,14 @@
-<p>news works!</p>
+<!-- Gaming News -->
+<div class="container">
+  <!-- Spinner When Loading -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+  <!-- News Articles -->
+  <div class="text-center">
+    <button class="btn btn-danger" (click)="getSearchTerm()">Feeling Lucky</button>
+  </div>
+  <div>
+    {{ data | json }}
+  </div>
+</div>

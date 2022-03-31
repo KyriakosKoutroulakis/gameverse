@@ -1,1 +1,19 @@
-<p>genres works!</p>
+<!-- Dispaly Genres Cards -->
+<div class="container">
+  <!-- Spinner When Loading -->
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+  <!-- Games Cards Section -->
+  <div class="row row-cols-4">
+    <div class="col mb-3" *ngFor="let genre of data.results">
+      <div class="card bg-dark text-light">
+        <img [src]="genre.image_background" class="card-img-top" alt="Genre image">
+        <div class="card-body text-center">
+          <h4 class="card-title mb-3">{{ genre.name }}</h4>
+          <a class="btn btn-danger" (click)="findGamesByGenre(genre.name)">See Games</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
