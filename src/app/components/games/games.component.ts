@@ -46,11 +46,12 @@ export class GamesComponent implements OnInit {
 
     this.loading = false;
     // Scroll back on top of the page
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 
   orderingGames(param: string) {
     this.loading = true;
+
     this.rawgService.getUrlRequested('games', param).subscribe({
       next: (res) => this.data = res,
       error: (err) => this.msg = err
@@ -59,8 +60,15 @@ export class GamesComponent implements OnInit {
   }
 
   filterGames() {
+    this.loading = true;
     console.log(this.searchName);
+    this.rawgService.getUrlRequested(`games?search=${this.searchName}`, '').subscribe({
+      next: (res) => this.data = res,
+      error: (err) => this.msg = err
+    });
+
     this.searchName = '';
+    this.loading = false;
   }
 }
 

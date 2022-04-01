@@ -9,6 +9,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 
 export class NewsComponent implements OnInit {
+  public searchName: string = '';
   public data: any;
   public msg: any;
   public loading: boolean = true;
@@ -25,7 +26,7 @@ export class NewsComponent implements OnInit {
 
   getSearchTerm(): void {
     this.loading = true;
-    this.newsService.getSearchedNews('ps5').subscribe({
+    this.newsService.getSearchedNews(this.searchName).subscribe({
       next: res => this.data = res,
       error: err => this.msg =  err 
     })

@@ -5,10 +5,37 @@
     <app-spinner></app-spinner>
   </div>
   <!-- News Articles -->
-  <div class="text-center">
-    <button class="btn btn-danger" (click)="getSearchTerm()">Feeling Lucky</button>
+  <div class="d-flex justify-content-evenly m-3" *ngIf="!loading">
+  <div class="input-group">
+    <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search an article" />
+    <button class="btn btn-outline-secondary" type="button" (click)="getSearchTerm()">Search</button>
   </div>
-  <div>
+  
+  
+</div>
+<!-- <div class="text-center">
+  <button class="btn btn-danger" (click)="getSearchTerm()">Feeling Lucky</button>
+</div> -->
+  <!-- <div>
     {{ data | json }}
+  </div> -->
+  <!-- News Section -->
+  <div class="row row-cols-4 mt-3">
+    <div class="col mb-3" *ngFor="let news of data">
+      <div class="card bg-dark text-light">
+        <a routerLink="/article/:" class="text-light">
+        <img [src]="news.image" class="card-img-top" alt="Game image" />
+        <div class="card-body text-center">
+          <h6 class="card-subtitle mb-2" id="news-title"> {{ news.title }}</h6>
+          <!-- <h6 class="card-subtitle mb-1 text-muted text-truncate" id="news-description" >{{ news.description }}</h6> -->
+          <h6 class="card-subtitle mb-1 mt-3 text-muted" id="news-date"> Published: {{ news.date }}</h6>
+        </div>
+      </a>
+      </div>
+    </div>
   </div>
+  <!-- <div class="text-center" *ngIf="!loading">
+    <button class="btn btn-dark m-2" [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
+    <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
+  </div> -->
 </div>
