@@ -27,4 +27,8 @@ export class GameComponent implements OnInit {
     this.loading = false;
   }
 
+  bringResult(num: number): number {
+    return Math.floor(num);
+  }
+
 }

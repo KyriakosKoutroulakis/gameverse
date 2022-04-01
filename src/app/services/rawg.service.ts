@@ -54,7 +54,7 @@ export class RawgService {
   private createParams(param: string): HttpParams {
     if (param !== '') {
       return this.httpParams
-        .set('ordering', `-${param}`)
+        .set('ordering', param)
         .set('key', environment.Rawg_Api_Key);
     } else {
       return this.httpParams.set('key', environment.Rawg_Api_Key);

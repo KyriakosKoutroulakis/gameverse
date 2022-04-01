@@ -8,19 +8,12 @@ import { RawgService } from 'src/app/services/rawg.service';
   styleUrls: ['./games.component.scss']
 })
 
-/** 
-* * important Dynamically push to platformsArray after subrcribe
-* * important Search name in page
-* TODO: filterGames() fix
-*
-*/
-
 export class GamesComponent implements OnInit {
   public data: any;
   public msg: string = '';
   public searchName: string = '';
-  public platforms: Array<string> = ['PC', ' PlayStation', ' Xbox'];               // Problem with dynamic pushing
-  public gameGenres: Array<string> = ['Action', ' RPG', ' Adventure', 'Violence']; // after subscribing
+  // public platforms: Array<string> = ['PC', ' PlayStation', ' Xbox'];               // Problem with dynamic pushing
+  //public gameGenres: Array<string> = ['Action', ' RPG', ' Adventure', 'Violence']; // after subscribing
   public loading: boolean = true;
 
   constructor(private rawgService: RawgService) { }
@@ -29,7 +22,7 @@ export class GamesComponent implements OnInit {
     this.getGames();
   }
 
-  getGames() {
+  async getGames() {
     this.rawgService.getUrlRequested('games', '').subscribe({
       next: (res) => this.data = res,
       error: (err) => this.msg = err
@@ -37,7 +30,7 @@ export class GamesComponent implements OnInit {
     this.loading = false;
   }
 
-  getNextPage(url: string) {
+  async getNextPage(url: string) {
     this.loading = true;
     this.rawgService.getNextPage(url).subscribe({
       next: (res) => this.data = res,
@@ -56,6 +49,14 @@ export class GamesComponent implements OnInit {
       error: (err) => this.msg = err
     });
     this.loading = false;
+  }
+
+  getGameGenres(genres: Array<any>): Array<string> {
+    const gameGenres: Array<string> = [];
+
+    genres.forEach(genres => gameGenres.push(` ${genres.slug}`));
+
+    return gameGenres;
   }
 
   filterGames() {

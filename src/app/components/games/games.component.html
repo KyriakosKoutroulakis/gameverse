@@ -7,12 +7,12 @@
   <!-- Search Bar On Top -->
   <div class="d-flex justify-content-evenly m-3" *ngIf="!loading">
     <div class="input-group">
-      <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search a Game" />
+      <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search Game by Title ..." />
       <button class="btn btn-outline-secondary" type="button" (click)="filterGames()">Search</button>
     </div>
     <div>
       <a class="custom-btn" (click)="getGames()"><strong>#Popular</strong></a>
-      <a class="custom-btn  mx-3" (click)="orderingGames('rating')"><strong>#Top Rated</strong></a>
+      <a class="custom-btn  mx-3" (click)="orderingGames('-rating')"><strong>#Top Rated</strong></a>
       <a class="custom-btn" (click)="orderingGames('released')"><strong>#Most Recent</strong></a>
     </div>
   </div>
@@ -22,10 +22,15 @@
       <div class="card bg-dark text-light">
         <img [src]="game.background_image" class="card-img-top" alt="Game image" />
         <div class="card-body text-center">
-          <h5 class="card-title mb-3">{{ game.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ platforms }}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">{{ gameGenres }}</h6>
-          <h6 class="card-text text-warning">Rating: {{ game.rating }}</h6>
+          <h5 class="card-title mb-1">{{ game.name }}</h5>
+          <!-- <h6 class="card-subtitle mb-2 text-muted">{{ platforms }}</h6> -->
+          <div class="mb-2">
+            <i-bs class="mx-1" name="pc-display"></i-bs>
+            <i-bs class="mx-1" name="playstation"></i-bs>
+            <i-bs class="mx-1" name="xbox"></i-bs>
+          </div>
+          <h6 class="card-subtitle my-1 text-muted">{{ getGameGenres(game.genres) }}</h6>
+          <h6 class="card-text text-warning mb-2">Rating: {{ game.rating }}</h6>
           <a routerLink="/game/{{ game.id }}" class="btn btn-danger">Play Game</a>
         </div>
       </div>
@@ -36,5 +41,3 @@
     <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
   </div>
 </div>
-
-<!-- {{ data | async | json }} -->

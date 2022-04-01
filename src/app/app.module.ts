@@ -4,6 +4,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+// Bootstrap icons
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation } from 'ngx-bootstrap-icons';
+
 // Services
 import { RawgService } from './services/rawg.service';
 import { UserService } from './services/user.service';
@@ -21,6 +25,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
+const icons = { link45Deg, xbox, pcDisplay, playstation  }
 
 @NgModule({
   declarations: [
@@ -39,7 +44,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick(icons)
   ],
   providers: [
     RawgService,
