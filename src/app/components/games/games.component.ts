@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RawgService } from 'src/app/services/rawg.service';
 
@@ -12,15 +13,24 @@ export class GamesComponent implements OnInit {
   public data: any;
   public msg: string = '';
   public searchTerm: string = '';
+  public routeState: any;
   public loading: boolean = true;
 
-  constructor(private rawgService: RawgService) { }
+  constructor(private rawgService: RawgService, private router: Router) {
+    if (this.router.getCurrentNavigation()?.extras.state) {
+      this.routeState = this.router.getCurrentNavigation()?.extras.state;
+
+      if (this.routeState) {
+        this.getGamesFromSpecificGenre(this.routeState.genreSelected);
+      }
+    }
+   }
 
   ngOnInit(): void {
     this.getGames();
   }
 
-  async getGames() {
+  getGames() {
     this.rawgService.getUrlRequested('games', '').subscribe({
       next: (res) => {
         this.data = res;
@@ -30,8 +40,9 @@ export class GamesComponent implements OnInit {
     });
   }
 
-  async getNextPage(url: string) {
+  getNextPage(url: string) {
     this.loading = true;
+
     this.rawgService.getNextPage(url).subscribe({
       next: (res) => {
         this.data = res;
@@ -44,6 +55,7 @@ export class GamesComponent implements OnInit {
     window.scroll(0, 0);
   }
 
+  // Order games on page based on parameter clicked
   orderingGames(param: string) {
     this.loading = true;
 
@@ -56,6 +68,7 @@ export class GamesComponent implements OnInit {
     });
   }
 
+  // Filter games with search param
   filterGames() {
     this.loading = true;
     this.data = {};
@@ -71,12 +84,28 @@ export class GamesComponent implements OnInit {
     this.searchTerm = '';
   }
 
+  // Edits game genres to be displayed
   getGameGenres(genres: Array<any>): Array<string> {
     const gameGenres: Array<string> = [];
 
     genres.forEach(genres => gameGenres.push(` ${genres.slug}`));
 
     return gameGenres.length > 2 ? gameGenres.slice(0,2) : gameGenres;
+  }
+
+  // Function activated from Genres component
+  // Display games based on genre selection
+  getGamesFromSpecificGenre(genreSelected: string) {
+    this.loading = true;
+    this.data = {};
+
+    this.rawgService.getUrlRequested(`games?genres=${genreSelected}`, '').subscribe({
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
+      error: (err) => this.msg = err
+    });
   }
 }
 

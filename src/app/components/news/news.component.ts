@@ -18,19 +18,23 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.newsService.getVideoGamesNews().subscribe({
-      next: res => this.data = res,
+      next: res => {
+        this.data = res;
+        this.loading = false;
+      },
       error: err => this.msg =  err 
     })
-    this.loading = false;
   }
 
   getSearchTerm(): void {
     this.loading = true;
+
     this.newsService.getSearchedNews(this.searchName).subscribe({
-      next: res => this.data = res,
+      next: res => {
+        this.data = res;
+        this.loading = false;
+      },
       error: err => this.msg =  err 
     })
-    this.loading = false;
   }
-
 }

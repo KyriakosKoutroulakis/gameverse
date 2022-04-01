@@ -6,13 +6,10 @@
   </div>
   <!-- Games Cards Section -->
   <div class="row row-cols-4">
-    <div class="col mb-3" *ngFor="let genre of data.results">
-      <div class="card bg-dark text-light">
-        <img [src]="genre.image_background" class="card-img-top" alt="Genre image">
-        <div class="card-body text-center">
-          <h4 class="card-title mb-3">{{ genre.name }}</h4>
-          <a class="btn btn-danger" (click)="findGamesByGenre(genre.name)">See Games</a>
-        </div>
+    <div class="col my-3" *ngFor="let genre of data.results">
+      <div class="btn card text-light" (click)="searchGames(genre.name)">
+        <img [src]="genre.image_background" alt="Genre image">
+        <h4 class="card-title"><strong>{{ genre.name }}</strong></h4>
       </div>
     </div>
   </div>
