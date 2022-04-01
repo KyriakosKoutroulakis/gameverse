@@ -7,7 +7,7 @@
   <!-- Search Bar On Top -->
   <div class="d-flex justify-content-evenly m-3" *ngIf="!loading">
     <div class="input-group">
-      <input type="text" class="form-control" name="searchName" [(ngModel)]="searchName" placeholder="Search Game by Title ..." />
+      <input type="text" class="form-control" name="searchName" [(ngModel)]="searchTerm" placeholder="Search Game by Title ..." />
       <button class="btn btn-outline-secondary" type="button" (click)="filterGames()">Search</button>
     </div>
     <div>
@@ -23,7 +23,6 @@
         <img [src]="game.background_image" class="card-img-top" alt="Game image" />
         <div class="card-body text-center">
           <h5 class="card-title mb-1">{{ game.name }}</h5>
-          <!-- <h6 class="card-subtitle mb-2 text-muted">{{ platforms }}</h6> -->
           <div class="mb-2">
             <i-bs class="mx-1" name="pc-display"></i-bs>
             <i-bs class="mx-1" name="playstation"></i-bs>
@@ -36,6 +35,7 @@
       </div>
     </div>
   </div>
+  <!-- Buttons to move pages Next & Back -->
   <div class="text-center" *ngIf="!loading">
     <button class="btn btn-dark m-2" [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
     <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>

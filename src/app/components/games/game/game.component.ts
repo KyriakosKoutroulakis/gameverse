@@ -21,14 +21,19 @@ export class GameComponent implements OnInit {
     this.route.params.subscribe(val => this.gameId = val);
     
     this.rawgService.getGameDetails(this.gameId.id).subscribe({
-      next: (res) => this.data = res,
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
       error: (err) => this.msg = err
     });
-    this.loading = false;
   }
 
-  bringResult(num: number): number {
-    return Math.floor(num);
-  }
+  fetchTags(tags: Array<any>): Array<string> {
+    const gameTags: Array<string> = [];
 
+    tags.forEach(tag => gameTags.push(` #${tag.slug}`));
+
+    return gameTags.length > 15 ? gameTags.slice(0,15) : gameTags;
+  }
 }

@@ -11,9 +11,7 @@ import { RawgService } from 'src/app/services/rawg.service';
 export class GamesComponent implements OnInit {
   public data: any;
   public msg: string = '';
-  public searchName: string = '';
-  // public platforms: Array<string> = ['PC', ' PlayStation', ' Xbox'];               // Problem with dynamic pushing
-  //public gameGenres: Array<string> = ['Action', ' RPG', ' Adventure', 'Violence']; // after subscribing
+  public searchTerm: string = '';
   public loading: boolean = true;
 
   constructor(private rawgService: RawgService) { }
@@ -24,20 +22,24 @@ export class GamesComponent implements OnInit {
 
   async getGames() {
     this.rawgService.getUrlRequested('games', '').subscribe({
-      next: (res) => this.data = res,
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
       error: (err) => this.msg = err
     });
-    this.loading = false;
   }
 
   async getNextPage(url: string) {
     this.loading = true;
     this.rawgService.getNextPage(url).subscribe({
-      next: (res) => this.data = res,
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
       error: (err) => this.msg = err
     });
 
-    this.loading = false;
     // Scroll back on top of the page
     window.scroll(0, 0);
   }
@@ -46,10 +48,27 @@ export class GamesComponent implements OnInit {
     this.loading = true;
 
     this.rawgService.getUrlRequested('games', param).subscribe({
-      next: (res) => this.data = res,
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
       error: (err) => this.msg = err
     });
-    this.loading = false;
+  }
+
+  filterGames() {
+    this.loading = true;
+    this.data = {};
+
+    this.rawgService.getUrlRequested(`games?search=${this.searchTerm}`, '').subscribe({
+      next: (res) => {
+        this.data = res;
+        this.loading = false;
+      },
+      error: (err) => this.msg = err
+    });
+
+    this.searchTerm = '';
   }
 
   getGameGenres(genres: Array<any>): Array<string> {
@@ -57,19 +76,7 @@ export class GamesComponent implements OnInit {
 
     genres.forEach(genres => gameGenres.push(` ${genres.slug}`));
 
-    return gameGenres;
-  }
-
-  filterGames() {
-    this.loading = true;
-    console.log(this.searchName);
-    this.rawgService.getUrlRequested(`games?search=${this.searchName}`, '').subscribe({
-      next: (res) => this.data = res,
-      error: (err) => this.msg = err
-    });
-
-    this.searchName = '';
-    this.loading = false;
+    return gameGenres.length > 2 ? gameGenres.slice(0,2) : gameGenres;
   }
 }
 
