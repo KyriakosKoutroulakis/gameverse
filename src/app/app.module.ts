@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { link45Deg, xbox, pcDisplay, playstation } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation, chevronRight } from 'ngx-bootstrap-icons';
 
 // Services
 import { RawgService } from './services/rawg.service';
@@ -24,8 +24,11 @@ import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
-const icons = { link45Deg, xbox, pcDisplay, playstation  }
+const icons = { link45Deg, xbox, pcDisplay, playstation, chevronRight }
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ const icons = { link45Deg, xbox, pcDisplay, playstation  }
     Error404Component,
     NavbarComponent,
     FooterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    LandingPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,4 +60,5 @@ const icons = { link45Deg, xbox, pcDisplay, playstation  }
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

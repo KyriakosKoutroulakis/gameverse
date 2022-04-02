@@ -1,16 +1,22 @@
-<!-- Dispaly Genres Cards -->
-<div class="container">
-  <!-- Spinner When Loading -->
-  <div class="d-flex justify-content-center" *ngIf="loading">
-    <app-spinner></app-spinner>
-  </div>
-  <!-- Games Cards Section -->
-  <div class="row row-cols-4">
-    <div class="col my-3" *ngFor="let genre of data.results">
-      <div class="btn card text-light" (click)="searchGames(genre.name)">
-        <img [src]="genre.image_background" alt="Genre image">
-        <h4 class="card-title"><strong>{{ genre.name }}</strong></h4>
+<app-navbar></app-navbar>
+
+<section class="bg-light p-4">
+  <!-- Dispaly Genres Cards -->
+  <div class="container">
+    <!-- Spinner When Loading -->
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <app-spinner></app-spinner>
+    </div>
+    <!-- Games Cards Section -->
+    <div class="row row-cols-4">
+      <div class="col my-3" *ngFor="let genre of data.results">
+        <div class="btn card text-light" (click)="searchGames(genre.name)">
+          <img [src]="genre.image_background" alt="Genre image">
+          <h4 class="card-title"><strong>{{ genre.name }}</strong></h4>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<app-footer></app-footer>

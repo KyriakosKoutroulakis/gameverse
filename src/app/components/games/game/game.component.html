@@ -1,72 +1,78 @@
+<app-navbar></app-navbar>
+
 <!-- Game Details -->
-<div class="container">
-  <!-- Spinner When Loading -->
-  <div class="d-flex justify-content-center" *ngIf="loading">
-    <app-spinner></app-spinner>
-  </div>
-  <!-- Game Info -->
-  <div class="my-4">
-    <div class="d-flex flex-row align-items-center">
-      <!-- Game Image -->
-      <div class="custom-cont card p-2">
-        <img [src]="data.background_image" [alt]="data.slung" class="img-fluid">
-      </div>
-      <!-- Game Details -->
-      <div class="custom-cont mx-2 p-2">
-        <p class="h2 m-2">{{ data.name }}</p>
-        <div class="d-flex flex-row align-items-center px-1">
-          <a class="btn btn-danger mx-2">Play Now</a>
-          <!-- Icons -->
-          <div class="mx-4">
-            <i-bs class="mx-1" name="pc-display"></i-bs>
-            <i-bs class="mx-1" name="playstation"></i-bs>
-            <i-bs class="mx-1" name="xbox"></i-bs>
-          </div>  
-          <h6 class="mx-2 text-warning fs-5"><strong>Rating: {{ data.rating }}</strong></h6>
-        </div>
-        <!-- Websites -->
-        <div class="custom-cont d-flex flex-row align-items-center">
-          <p class=" m-2">
-            Website:
-            <a [href]="data.website" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
-          </p>
-          <p class="m-2">
-            Metacritic:
-            <a [href]="data.metacritic_url" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
-          </p>
-          <p class="m-2">
-            Reddit:
-            <a [href]="data.reddit_url" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
-          </p>
-        </div>
-        <div class="custom-cont m-2">
-          <p class="text-muted">{{ fetchTags(data.tags)}}</p>
-        </div>
-        <!-- Ratings -->
-        <div class="custom-cont d-flex flex-column my-2">
-          <!-- Dynamically showing ratings -->
-          <div class="custom-cont d-flex flex-row align-items-center">
-            <div class="mx-3" *ngFor="let rating of data.ratings">
-              <label class="text-muted custom-txt">{{ rating.title }}</label>
-              <div class="progress" style="height: 15px;">
-                <div 
-                  class="progress-bar progress-bar-striped" 
-                  role="progressbar" 
-                  [style.width]="rating.percent+'%'" 
-                  aria-valuemin="0" 
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <small>{{ rating.percent }}%</small>
-            </div>
-          </div> 
-        </div>
-      </div>
+<section class="bg-light p-4">
+  <div class="container">
+    <!-- Spinner When Loading -->
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <app-spinner></app-spinner>
     </div>
-    <hr>
-    <!-- Description -->
-    <div>
-      <p class="text-muted">{{ data.description_raw }}</p>
-    </div>  
+    <!-- Game Info -->
+    <div class="my-4">
+      <div class="d-flex flex-row align-items-center">
+        <!-- Game Image -->
+        <div class="custom-cont card p-2">
+          <img [src]="data.background_image" [alt]="data.slung" class="img-fluid">
+        </div>
+        <!-- Game Details -->
+        <div class="custom-cont mx-2 p-2">
+          <p class="h2 m-2">{{ data.name }}</p>
+          <div class="d-flex flex-row align-items-center px-1">
+            <a class="btn btn-danger mx-2">Play Now</a>
+            <!-- Icons -->
+            <div class="mx-4">
+              <i-bs class="mx-1" name="pc-display"></i-bs>
+              <i-bs class="mx-1" name="playstation"></i-bs>
+              <i-bs class="mx-1" name="xbox"></i-bs>
+            </div>  
+            <h6 class="mx-2 text-warning fs-5"><strong>Rating: {{ data.rating }}</strong></h6>
+          </div>
+          <!-- Websites -->
+          <div class="custom-cont d-flex flex-row align-items-center">
+            <p class=" m-2">
+              Website:
+              <a [href]="data.website" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
+            </p>
+            <p class="m-2">
+              Metacritic:
+              <a [href]="data.metacritic_url" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
+            </p>
+            <p class="m-2">
+              Reddit:
+              <a [href]="data.reddit_url" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
+            </p>
+          </div>
+          <div class="custom-cont m-2">
+            <p class="text-muted">{{ fetchTags(data.tags)}}</p>
+          </div>
+          <!-- Ratings -->
+          <div class="custom-cont d-flex flex-column my-2">
+            <!-- Dynamically showing ratings -->
+            <div class="custom-cont d-flex flex-row align-items-center">
+              <div class="mx-3" *ngFor="let rating of data.ratings">
+                <label class="text-muted custom-txt">{{ rating.title }}</label>
+                <div class="progress" style="height: 15px;">
+                  <div 
+                    class="progress-bar progress-bar-striped" 
+                    role="progressbar" 
+                    [style.width]="rating.percent+'%'" 
+                    aria-valuemin="0" 
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <small>{{ rating.percent }}%</small>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- Description -->
+      <div>
+        <p class="text-muted">{{ data.description_raw }}</p>
+      </div>  
+    </div>
   </div>
-</div>
+</section>
+
+<app-footer></app-footer>
