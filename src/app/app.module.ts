@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { link45Deg, xbox, pcDisplay, playstation, chevronRight } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch } from 'ngx-bootstrap-icons';
 
 // Services
 import { RawgService } from './services/rawg.service';
@@ -28,7 +28,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
-const icons = { link45Deg, xbox, pcDisplay, playstation, chevronRight }
+const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch }
 
 @NgModule({
   declarations: [

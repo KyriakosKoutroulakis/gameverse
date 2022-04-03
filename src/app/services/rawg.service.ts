@@ -49,6 +49,18 @@ export class RawgService {
       )
   }
 
+  // @desc  Fetch game trailer
+  // @route GET url/games/:id/movies
+  getGameTrailer(id: number): Observable<any> {
+    const params = this.createParams('');
+
+    return this.rawgHttp.get(`${this.rawgApiUrl}/games/${id}/movies`, { headers: this.httpHeaders, params })
+    .pipe(
+      retry(1),
+      catchError(error => throwError(() => `ERROR: ${error}` ))
+    )
+  }
+
   // Helper private method createParams()
   // Returning generated params
   private createParams(param: string): HttpParams {
