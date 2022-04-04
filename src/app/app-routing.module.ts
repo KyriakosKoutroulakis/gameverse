@@ -11,12 +11,14 @@ import { GenresComponent } from './components/genres/genres.component';
 import { NewsComponent } from './components/news/news.component';
 import { AboutComponent } from './components/about/about.component';
 import { Error404Component } from './components/error404/error404.component';
+import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
-  { path:  'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'payment', component: PaymentPageComponent },
   { path: 'games', component: GamesComponent },
   { path: 'game/:id', component: GameComponent},
   { path: 'genres', component: GenresComponent },

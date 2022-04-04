@@ -1,8 +1,52 @@
 <section class="showcase">
-  <div class="showcase-top">
-    <img src="../../../assets/logo-full.png" alt="Brand logo" class="d-inline-block align-text-center">
-  </div>
-  <div class="showcase-content">
-    <p class="text-light">Don't have an accoun? Create one <a routerLink="/">here</a></p> 
-  </div>
+    <div class="showcase-top">
+        <img src="../../../assets/logo-full.png" alt="Brand logo" class="d-inline-block align-text-center">
+    </div>
+    <div class="showcase-content">
+        <div class="card w-30">
+            <form #loginForm="ngForm" (ngSubmit)="onSignIn()">
+                <div class="mb-3 justify-content-center">
+                    <h1 class="card-header mb-4 fw-normal text-black">Sign In</h1>
+                    <h6 class="card-subtitle text-muted">
+                        Need an account?
+                        <a routerLink="/register">Sign Up</a>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-1">
+                        <label for="userEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="userEmail" name="userEmail"
+                            [(ngModel)]="user.email" #userEmail="ngModel" required email>
+                        <div *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="userEmail.hasError('required')">
+                                The field is required
+                            </div>
+                            <div *ngIf="userEmail.hasError('email')">
+                                Wrong email format
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            [(ngModel)]="user.password" #password="ngModel" required minlength="6">
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.hasError('required')">
+                            The field is required
+                        </div>
+                        <div *ngIf="password.hasError('minlength')">
+                            Minimum 6 characters
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remememberMeCheck">
+                        <label class="form-check-label" for="remememberMeCheck">Remember me</label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-danger" [disabled]="!loginForm.valid" type="submit">SIGN IN</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>

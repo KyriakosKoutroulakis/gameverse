@@ -27,6 +27,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
 const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch }
 
@@ -44,7 +45,8 @@ const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, tw
     SpinnerComponent,
     LandingPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PaymentPageComponent
   ],
   imports: [
     BrowserModule,
