@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 
-declare var window: any;
+import { UserService } from '../../services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -11,35 +10,20 @@ declare var window: any;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  formModal: any;
-  user: User = {
-    email: '',
-    password: ''
-  };
+  user: User = { email: '', password: ''};
   response: any;
   message: string = '';
 
   constructor(private service: UserService, private router: Router) { }
 
-  ngOnInit(): void {
-    // this.formModal = new window.bootstrap.Modal(
-    //   document.getElementById('signinModal')
-    // ).show();
-  }
+  ngOnInit(): void { }
 
   onSignIn() {
     this.service.userLogin(this.user).subscribe({
       next: data => this.response = data.json(),
-      error: err => this.message = err, //console.log(err)
-      // complete: () => this.message = "Request completed!"
+      error: err => this.message = err,
     });
-    alert("You have successfully signed in")
-    // const backdrops = document.querySelectorAll(".modal-backdrop")
-    // backdrops.forEach(backdrop => {
-    //   backdrop.remove();
-    // })
+    
     this.router.navigate(['/games']);
   }
-
 }

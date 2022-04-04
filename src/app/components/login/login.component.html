@@ -2,14 +2,15 @@
     <div class="showcase-top">
         <img src="../../../assets/logo-full.png" alt="Brand logo" class="d-inline-block align-text-center">
     </div>
-    <div class="showcase-content">
-        <div class="card w-30">
+
+    <div class="showcase-content place">
+        <div class="card">
             <form #loginForm="ngForm" (ngSubmit)="onSignIn()">
                 <div class="mb-3 align-content-center">
                     <h1 class="card-header mb-4 fw-normal text-black">Sign In</h1>
                     <h6 class="card-subtitle text-muted">
                         Need an account?
-                        <a routerLink="/register">Sign Up</a>
+                        <a routerLink="/register"> Sign Up</a>
                     </h6>
                 </div>
                 <div class="card-body">
@@ -48,7 +49,9 @@
                 </div>
             </form>
             <div class="text-muted mt-2 align-content-center">
-                <h6>By continuing, you agree to accept our Privacy Policy & Terms of Service.</h6>
+                <p class="lead">By continuing, you agree to accept our <br>
+                    Privacy Policy & Terms of Service.
+                </p>
             </div>
         </div>
     </div>

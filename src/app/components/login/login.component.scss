@@ -1,8 +1,18 @@
-<<<<<<< HEAD
 .showcase {
   background: url('../../../assets/lpbg.jpg') no-repeat center center/cover;
-=======
+}
+
 .card-body {
-    text-align: left
->>>>>>> ca4c60e2224bb952f620083f8a04fceff7b7c044
+  text-align: left;
+}
+
+.place {
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  transform: translate(-30%, -50%);
+
+  .card {
+    width: 500px;
+  }
 }

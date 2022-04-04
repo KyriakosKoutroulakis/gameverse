@@ -26,12 +26,10 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-<<<<<<< HEAD
 import { E404Component } from './components/errors/e404/e404.component';
 import { E500Component } from './components/errors/e500/e500.component';
-=======
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
->>>>>>> ca4c60e2224bb952f620083f8a04fceff7b7c044
+
 
 const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft }
 
@@ -49,12 +47,9 @@ const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, tw
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
     E404Component,
     E500Component,
-=======
-    PaymentPageComponent
->>>>>>> ca4c60e2224bb952f620083f8a04fceff7b7c044
+    PaymentPageComponent,
   ],
   imports: [
     BrowserModule,
