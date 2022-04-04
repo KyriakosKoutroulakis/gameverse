@@ -8,15 +8,15 @@
       <app-spinner></app-spinner>
     </div>
     <!-- Search Bar On Top -->
-    <div class="d-flex justify-content-evenly m-3" *ngIf="!loading">
-      <div class="input-group">
+    <div class="d-flex flex-column align-items-center my-3" *ngIf="!loading">
+      <div class="my-2">
+        <a class="custom-btn" (click)="getGames()"><strong>Popular</strong></a>
+        <a class="custom-btn  mx-3" (click)="orderingGames('-rating')"><strong>Top Rated</strong></a>
+        <a class="custom-btn" (click)="orderingGames('released')"><strong>Most Recent</strong></a>
+      </div>
+      <div class="input-group my-2">
         <input type="text" class="form-control" name="searchName" [(ngModel)]="searchTerm" placeholder="Search Game by Title ..." />
         <button class="btn btn-outline-secondary" type="button" (click)="filterGames()">Search</button>
-      </div>
-      <div>
-        <a class="custom-btn" (click)="getGames()"><strong>#Popular</strong></a>
-        <a class="custom-btn  mx-3" (click)="orderingGames('-rating')"><strong>#Top Rated</strong></a>
-        <a class="custom-btn" (click)="orderingGames('released')"><strong>#Most Recent</strong></a>
       </div>
     </div>
     <!-- Games Cards Section -->
@@ -33,14 +33,15 @@
             </div>
             <h6 class="card-subtitle my-1 text-muted">{{ getGameGenres(game.genres) }}</h6>
             <h6 class="card-text text-warning mb-2">Rating: {{ game.rating }}</h6>
-            <a routerLink="/game/{{ game.id }}" class="btn btn-danger">Play Game</a>
+            <a routerLink="/maintenance" class="btn btn-danger mx-2" style="width: 105px;">Play Game</a>
+            <a routerLink="/game/{{ game.id }}" class="btn btn-secondary mx-2" style="width: 105px;">Details</a>
           </div>
         </div>
       </div>
     </div>
     <!-- Buttons to move pages Next & Back -->
     <div class="text-center" *ngIf="!loading">
-      <button class="btn btn-dark m-2" [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
+      <button class="btn btn-dark " [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
       <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
     </div>
   </div>

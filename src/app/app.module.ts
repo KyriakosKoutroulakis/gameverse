@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft } from 'ngx-bootstrap-icons';
 
 // Services
 import { RawgService } from './services/rawg.service';
@@ -20,15 +20,16 @@ import { GameComponent } from './components/games/game/game.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { AboutComponent } from './components/about/about.component';
 import { NewsComponent } from './components/news/news.component';
-import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { E404Component } from './components/errors/e404/e404.component';
+import { E500Component } from './components/errors/e500/e500.component';
 
-const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch }
+const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft }
 
 @NgModule({
   declarations: [
@@ -38,13 +39,14 @@ const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, tw
     GenresComponent,
     AboutComponent,
     NewsComponent,
-    Error404Component,
     NavbarComponent,
     FooterComponent,
     SpinnerComponent,
     LandingPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    E404Component,
+    E500Component,
   ],
   imports: [
     BrowserModule,

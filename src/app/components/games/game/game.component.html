@@ -7,6 +7,7 @@
     <div class="d-flex justify-content-center" *ngIf="loading">
       <app-spinner></app-spinner>
     </div>
+    <a routerLink="/games" class="btn btn-danger"><i-bs class="mx-1" name="chevron-left"></i-bs>Go Back</a>
     <!-- Game Info -->
     <div class="my-4">
       <div class="d-flex flex-row align-items-center">
@@ -18,7 +19,7 @@
         <div class="custom-cont mx-2 p-2">
           <p class="h2 m-2">{{ data.name }}</p>
           <div class="d-flex flex-row align-items-center px-1">
-            <a class="btn btn-danger mx-2">Play Now</a>
+            <a routerLink="/maintenance" class="btn btn-danger mx-2">Play Now</a>
             <!-- Icons -->
             <div class="mx-4">
               <i-bs class="mx-1" name="pc-display"></i-bs>

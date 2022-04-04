@@ -10,19 +10,20 @@ import { GameComponent } from './components/games/game/game.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { NewsComponent } from './components/news/news.component';
 import { AboutComponent } from './components/about/about.component';
-import { Error404Component } from './components/error404/error404.component';
-
+import { E500Component } from './components/errors/e500/e500.component';
+import { E404Component } from './components/errors/e404/e404.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
-  { path:  'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'games', component: GamesComponent },
   { path: 'game/:id', component: GameComponent},
   { path: 'genres', component: GenresComponent },
   { path: 'news', component: NewsComponent },
   { path: 'about', component: AboutComponent },
-  { path: '**', component: Error404Component},
+  { path: 'maintenance', component: E500Component },
+  { path: '**', component: E404Component },
 ];
 
 @NgModule({
