@@ -24,7 +24,7 @@
                         <label for="cardNumber" class="form-label">Card number</label>
                         <input type="text" class="form-control" id="cardNumber" name="cardNumber"
                             [(ngModel)]="card.cardNumber" #cardNumber="ngModel" required pattern="[0-9.]+"
-                            maxlength="16">
+                            maxlength="16" minlength="16">
                         <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
                             class="alert alert-danger">
                             <div *ngIf="cardNumber.hasError('required')">
@@ -36,11 +36,14 @@
                             <div *ngIf="cardNumber.hasError('maxlength')">
                                 Invalid format
                             </div>
+                            <div *ngIf="cardNumber.hasError('minlength')">
+                                Invalid format
+                            </div>
                         </div>
                     </div>
                     <div class="mb-2">
                         <label for="expiryDate" class="form-label">Expiry date</label>
-                        <input type="text" class="form-control" id="expiryDate" name="expiryDate"
+                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="mm/yy"
                             [(ngModel)]="card.expiryDate" #expiryDate="ngModel" required pattern="[0-9/]+">
                     </div>
                     <div *ngIf="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)"
@@ -55,7 +58,7 @@
                     <div class="mb-2">
                         <label for="cvv" class="form-label">CVV</label>
                         <input type="text" class="form-control" id="cvv" name="cvv" [(ngModel)]="card.cvv"
-                            #cvv="ngModel" required pattern="[0-9.]+" maxlength="3">
+                            #cvv="ngModel" required pattern="[0-9.]+" maxlength="3" placeholder="123">
                     </div>
                     <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="alert alert-danger">
                         <div *ngIf="cvv.hasError('required')">
