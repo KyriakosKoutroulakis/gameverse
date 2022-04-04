@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft } from 'ngx-bootstrap-icons';
 
 // Services
 import { RawgService } from './services/rawg.service';
@@ -31,7 +31,7 @@ import { E500Component } from './components/errors/e500/e500.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
 
-const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft }
+const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft }
 
 @NgModule({
   declarations: [

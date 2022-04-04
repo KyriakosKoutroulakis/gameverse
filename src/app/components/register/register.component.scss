@@ -5,3 +5,14 @@
 .card-body {
     text-align: left
 }
+
+.place {
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  transform: translate(-30%, -50%);
+
+  .card {
+    width: 500px;
+  }
+}
