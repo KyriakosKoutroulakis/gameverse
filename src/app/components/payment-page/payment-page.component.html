@@ -1,0 +1,80 @@
+<section class="showcase">
+    <div class="showcase-top">
+        <img src="../../../assets/logo-full.png" alt="Brand logo" class="d-inline-block align-text-center">
+    </div>
+    <div class="showcase-content">
+        <div class="card w-30">
+            <form #paymentForm="ngForm" (ngSubmit)="onPay()">
+                <div class="mb-3 align-content-center">
+                    <h6 class="mb-4">STEP 2 OF 2</h6>
+                    <h1 class="card-header mb-4 fw-normal text-black">Set up your payment</h1>
+                </div>
+                <div class="card-body">
+                    <div class="mb-1">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="card.name"
+                            #name="ngModel" required>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div *ngIf="name.hasError('required')">
+                                The field is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="cardNumber" class="form-label">Card number</label>
+                        <input type="text" class="form-control" id="cardNumber" name="cardNumber"
+                            [(ngModel)]="card.cardNumber" #cardNumber="ngModel" required pattern="[0-9.]+"
+                            maxlength="16" minlength="16">
+                        <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="cardNumber.hasError('required')">
+                                The field is required
+                            </div>
+                            <div *ngIf="cardNumber.hasError('pattern')">
+                                Invalid format
+                            </div>
+                            <div *ngIf="cardNumber.hasError('maxlength')">
+                                Invalid format
+                            </div>
+                            <div *ngIf="cardNumber.hasError('minlength')">
+                                Invalid format
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="expiryDate" class="form-label">Expiry date</label>
+                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="mm/yy"
+                            [(ngModel)]="card.expiryDate" #expiryDate="ngModel" required pattern="[0-9/]+">
+                    </div>
+                    <div *ngIf="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="expiryDate.hasError('required')">
+                            The field is required
+                        </div>
+                        <div *ngIf="expiryDate.hasError('pattern')">
+                            Invalid date
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" [(ngModel)]="card.cvv"
+                            #cvv="ngModel" required pattern="[0-9.]+" maxlength="3" placeholder="123">
+                    </div>
+                    <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="alert alert-danger">
+                        <div *ngIf="cvv.hasError('required')">
+                            The field is required
+                        </div>
+                        <div *ngIf="cvv.hasError('pattern')">
+                            Invalid format
+                        </div>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-danger close" (click)="onPay()" [disabled]="!paymentForm.valid"
+                        type="close" data-dismiss="modal">COMPLETE YOUR ORDER</button>
+                </div>
+            </form>
+            <div class="text-muted mt-2 align-content-center">
+                <h6>By continuing, you agree to accept our Privacy Policy & Terms of Service.</h6>
+            </div>
+        </div>
+    </div>
+</section>
