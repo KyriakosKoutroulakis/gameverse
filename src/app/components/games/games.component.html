@@ -41,8 +41,8 @@
     </div>
     <!-- Buttons to move pages Next & Back -->
     <div class="text-center" *ngIf="!loading">
-      <button class="btn btn-dark " [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
-      <button class="btn btn-dark" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
+      <button class="btn btn-dark mx-3" [disabled]="!data.previous" (click)="getNextPage(data.previous)">Prev Page</button>
+      <button class="btn btn-dark mx-2" [disabled]="!data.next" (click)="getNextPage(data.next)">Next Page</button>
     </div>
   </div>
 </section>
