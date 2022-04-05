@@ -18,7 +18,7 @@
     <div class="row row-cols-4 mt-3">
       <div class="col mb-3" *ngFor="let news of data">
         <div class="card bg-dark text-light">
-          <a routerLink="/article/:" class="text-light">
+          <a [href]="news.link" target="_blank" class="text-light">
             <img [src]="news.image" class="card-img-top" alt="Game image" />
             <div class="card-body text-center">
               <h6 class="card-subtitle mb-2" id="news-title"> {{ news.title }}</h6>
