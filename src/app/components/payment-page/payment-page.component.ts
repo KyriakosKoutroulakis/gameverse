@@ -32,8 +32,9 @@ export class PaymentPageComponent {
 
   onPay(): void {
     if (this.user) {
-      console.log(this.user);
-      this.router.navigate(['/games']);
+      this.router.navigate(['/games'], {
+        state: { user: this.user }
+      });
     };  
   }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 import { RawgService } from 'src/app/services/rawg.service';
 
@@ -10,18 +11,23 @@ import { RawgService } from 'src/app/services/rawg.service';
 })
 
 export class GamesComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
+
   public data: any;
   public msg: string = '';
   public searchTerm: string = '';
   public routeState: any;
   public loading: boolean = true;
 
-  constructor(private rawgService: RawgService, private router: Router) {
+  constructor(private rawgService: RawgService, private router: Router, private toastr: ToastrService) {
     if (this.router.getCurrentNavigation()?.extras.state) {
       this.routeState = this.router.getCurrentNavigation()?.extras.state;
 
-      if (this.routeState) {
+      if (this.routeState.genreSelected) {
         this.filterGames(this.routeState.genreSelected);
+      } else if (this.routeState.user) {
+        this.showToastMessage(this.routeState.user.email);
       }
     }
   }
@@ -92,6 +98,13 @@ export class GamesComponent implements OnInit {
     this.searchTerm = '';
   }
 
+  showToastMessage(user: string) {
+    this.toastr.success(user.split('@')[0], 'Welcome', {
+      timeOut: 2000,
+      easeTime: 500
+    });
+  }
+
   // Edits game genres to be displayed
   // Invoked auto when pages loading
   getGameGenres(genres: Array<any>): Array<string> {
@@ -102,4 +115,3 @@ export class GamesComponent implements OnInit {
     return gameGenres.length > 2 ? gameGenres.slice(0,2) : gameGenres;
   }
 }
-

@@ -20,10 +20,10 @@ export class LoginComponent implements OnInit {
 
   onSignIn() {
     this.service.userLogin(this.user).subscribe({
-      next: data => this.response = data.json(),
+      next: (data: any) => {
+        this.router.navigate(['/games'], { state: { user: data } })
+      },
       error: err => this.message = err,
     });
-    
-    this.router.navigate(['/games']);
   }
 }

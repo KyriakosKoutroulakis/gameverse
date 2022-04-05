@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
@@ -30,7 +32,6 @@ import { E404Component } from './components/errors/e404/e404.component';
 import { E500Component } from './components/errors/e500/e500.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
-
 const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft }
 
 @NgModule({
@@ -56,7 +57,9 @@ const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, tw
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxBootstrapIconsModule.pick(icons)
+    NgxBootstrapIconsModule.pick(icons),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     RawgService,
