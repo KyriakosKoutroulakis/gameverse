@@ -99,7 +99,7 @@ export class GamesComponent implements OnInit {
   }
 
   showToastMessage(user: string) {
-    this.toastr.success(user.split('@')[0], 'Welcome', {
+    this.toastr.success('Enjoy gaming!', `Welcome ${user.split('@')[0]}`, {
       timeOut: 2000,
       easeTime: 500
     });

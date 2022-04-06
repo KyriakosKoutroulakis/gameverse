@@ -17,11 +17,11 @@
         </div>
         <!-- Game Details -->
         <div class="custom-cont mx-2 p-2">
-          <p class="h2 m-2">{{ data.name }}</p>
+          <p class="h2">{{ data.name }}</p>
           <div class="d-flex flex-row align-items-center px-1">
-            <a routerLink="/maintenance" class="btn btn-danger mx-2">Play Now</a>
+            <a routerLink="/maintenance" class="btn btn-danger my-2">Play Now</a>
             <!-- Icons -->
-            <div class="mx-4">
+            <div class="my-2 mx-5">
               <i-bs class="mx-1" name="pc-display"></i-bs>
               <i-bs class="mx-1" name="playstation"></i-bs>
               <i-bs class="mx-1" name="xbox"></i-bs>
@@ -29,7 +29,7 @@
             <h6 class="mx-2 text-warning fs-5"><strong>Rating: {{ data.rating }}</strong></h6>
           </div>
           <!-- Websites -->
-          <div class="custom-cont d-flex flex-row align-items-center">
+          <div class="custom-cont d-flex flex-row align-items-center my-2">
             <p class=" m-2">
               Website:
               <a [href]="data.website" target="_blank" class="link-primary">link<i-bs name="link-45deg"></i-bs></a>
