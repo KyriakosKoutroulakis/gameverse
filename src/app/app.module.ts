@@ -8,7 +8,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Bootstrap icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft } from 'ngx-bootstrap-icons';
+import { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft, microsoft } from 'ngx-bootstrap-icons';
 
 // Services
 import { RawgService } from './services/rawg.service';
@@ -32,7 +32,7 @@ import { E404Component } from './components/errors/e404/e404.component';
 import { E500Component } from './components/errors/e500/e500.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
 
-const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft }
+const icons = { link45Deg, xbox, pcDisplay, playstation, facebook, instagram, twitter, twitch, chevronLeft, boxArrowLeft, microsoft }
 
 @NgModule({
   declarations: [
